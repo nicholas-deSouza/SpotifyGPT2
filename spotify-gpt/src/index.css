@@ -16,7 +16,7 @@
 
 h1 {
   color: #00D35A;
-  font-size: 4em;
+  font-size: 3em;
 }
 
 a {
@@ -52,6 +52,26 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+input {
+  border-radius: 10px;
+  background-color: rgba(217, 217, 217, 1);
+  color: black;
+  width: 335px;
+  height: 50px;
+  border-color: rgba(217, 217, 217, 1);
+  font-size: 26px;
+}
+
+.logout-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* .playlist-container {
+  position: relative;
+} */
 
 .app {
   display: flex;

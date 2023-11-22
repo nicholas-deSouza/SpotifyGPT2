@@ -13,7 +13,6 @@ function App() {
   return (
     <div className="app">
       <div className="center-content">
-        <h1>Spotify React</h1>
         {!token ? (
           <HomeScreen
             CLIENT_ID={CLIENT_ID}

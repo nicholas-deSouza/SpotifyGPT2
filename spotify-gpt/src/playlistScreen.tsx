@@ -12,7 +12,17 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken }) => {
     window.localStorage.removeItem("token");
   };
 
-  return <button onClick={handleLogout}>Logout from PlaylistScreen</button>;
+  return (
+    <div className="playlist-container">
+      <div>
+        <h1>What type of music do you want?</h1>
+      </div>
+      <button onClick={handleLogout} className="logout-button">
+        Logout
+      </button>
+      <input type="text"></input>
+    </div>
+  );
 };
 
 export default PlaylistScreen;

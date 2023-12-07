@@ -1,6 +1,19 @@
 // PlaylistScreen.tsx
 import React from "react";
 
+//npx tsx openai-test.ts
+// import * as dotenv from "dotenv";
+import OpenAI from "openai";
+
+// dotenv.config();
+
+const openai = new OpenAI({
+  apiKey: import.meta.env.VITE_OPENAI_API_KEY as string,
+  dangerouslyAllowBrowser: true,
+});
+
+// console.log(chatCompletion.choices[0].message);
+
 interface PlaylistScreenProps {
   setToken: React.Dispatch<React.SetStateAction<string>>; // setToken is of type React.Dispatch<React.SetStateAction<string>>
   token: string;
@@ -35,6 +48,33 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
     }
   };
 
+  const populatePlaylist =
+    async (): Promise<OpenAI.Chat.Completions.ChatCompletion> => {
+      const userInput = (
+        document.getElementById("userInput") as HTMLInputElement
+      )?.value;
+
+      // const message =
+      //   ". Using the previous sentence, give me songs, do not include the ranking (1. , 2.) before the song name. just include song name. only give me the answer in python list format, no introductory text. song format must be [";
+      // (",");
+      // ("]");
+
+      const message =
+        ".give me songs related to what the previous sentence is about";
+
+      const fullMessage = `${userInput}` + message;
+
+      console.log(fullMessage);
+
+      const chatCompletion = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: fullMessage }],
+      });
+
+      console.log(chatCompletion.choices[0].message.content);
+      return chatCompletion;
+    };
+
   const createPlaylist = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const userInput = (document.getElementById("userInput") as HTMLInputElement)
       ?.value;
@@ -67,6 +107,8 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
             );
           })
           .catch((error) => console.error("Error creating playlist:", error));
+        // calls this func only when "enter" is pressed
+        populatePlaylist();
       }
     });
   };

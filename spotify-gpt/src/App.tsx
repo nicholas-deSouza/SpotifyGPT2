@@ -7,7 +7,8 @@ function App() {
   const REDIRECT_URI = "http://localhost:5173";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
-  const SCOPE = "user-read-private, user-read-email, playlist-modify-private"; // Add or modify scopes as needed
+  const SCOPE =
+    "user-read-private, user-read-email, playlist-modify-private, playlist-modify-public"; // Add or modify scopes as needed
 
   const [token, setToken] = useState<string>(""); // Specify the type explicitly as 'string'
 

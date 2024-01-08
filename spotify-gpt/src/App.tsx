@@ -4,11 +4,12 @@ import HomeScreen from "./homeScreen";
 
 function App() {
   const CLIENT_ID = "c5b92af7cda34c69a72b9d00cd7e0834";
-  const REDIRECT_URI = "http://localhost:5173";
+  const REDIRECT_URI = "http://localhost:5173/home";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SCOPE =
     "user-read-private, user-read-email, playlist-modify-private, playlist-modify-public"; // Add or modify scopes as needed
+  const SHOW_DIALOG = "true";
 
   const [token, setToken] = useState<string>(""); // Specify the type explicitly as 'string'
 
@@ -23,6 +24,7 @@ function App() {
             RESPONSE_TYPE={RESPONSE_TYPE}
             SCOPE={SCOPE}
             setToken={setToken}
+            SHOW_DIALOG={SHOW_DIALOG}
           />
         ) : (
           <div>

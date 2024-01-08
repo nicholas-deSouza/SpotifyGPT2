@@ -6,6 +6,7 @@ interface HomeScreenProps {
   AUTH_ENDPOINT: string;
   RESPONSE_TYPE: string;
   SCOPE: string;
+  SHOW_DIALOG: string;
   setToken: React.Dispatch<React.SetStateAction<string>>; // setToken is of type React.Dispatch<React.SetStateAction<string>>
 }
 
@@ -15,6 +16,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
   AUTH_ENDPOINT,
   RESPONSE_TYPE,
   SCOPE,
+  SHOW_DIALOG,
   setToken,
 }) => {
   const handleLogin = () => {
@@ -40,7 +42,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
 
   // seperate function to handle changing the page using onClick()
   const changePage = () => {
-    window.location.href = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
+    window.location.href = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}&show_dialog=${SHOW_DIALOG}`;
   };
 
   useEffect(() => {

@@ -3,6 +3,7 @@ import PlaylistScreen from "./playlistScreen";
 import HomeScreen from "./homeScreen";
 
 function App() {
+  // look into the state paramter for request user auth in spotify docs
   const CLIENT_ID = "c5b92af7cda34c69a72b9d00cd7e0834";
   const REDIRECT_URI = "http://localhost:5173/home";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";

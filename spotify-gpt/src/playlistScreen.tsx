@@ -1,5 +1,5 @@
 // PlaylistScreen.tsx
-import React from "react";
+import React, { useState } from "react";
 
 //npx tsx openai-test.ts
 import OpenAI from "openai";
@@ -24,6 +24,9 @@ interface PlaylistScreenProps {
 }
 
 const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
+  const [loading, setLoading] = useState(false);
+  const [playlistDone, setPlaylistDone] = useState(false);
+
   const handleLogout = () => {
     setToken("");
     window.localStorage.removeItem("token");
@@ -57,6 +60,7 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
     // allows for the value of Promise<string> getUserId to be resolved to type string
     getUserId().then(async (userId) => {
       if (event.key === "Enter") {
+        setLoading(true);
         try {
           const response = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
             method: "POST",
@@ -64,12 +68,18 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
               Authorization: `Bearer ${token}`,
               "Content-Type": "application/json",
             },
+
             body: JSON.stringify({
-              name: userInput,
-              public: false, // Set to false if you want a private playlist
-              description: "A description for your playlist",
+              name: userInput || "Default Playlist Name", // Use a default name if userInput is empty
+              // https://community.spotify.com/t5/Spotify-for-Developers/Api-to-create-a-private-playlist-doesn-t-work/td-p/5407807
+              public: false, // spotify will show it as a "public playlist" but it won't be showing on profile
+              description: userInput
+                ? "Created with the SpotifyGPT App ❤️"
+                : "Default Playlist Description", // Provide a default description if userInput is empty
             }),
           });
+
+          console.log("Request payload:", JSON.stringify);
 
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -160,6 +170,13 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
                 }
               );
 
+              setLoading(false);
+              // shows message that playlist is ready and then changes screen to show text box again
+              setPlaylistDone(true);
+              setTimeout(() => {
+                setPlaylistDone(false);
+              }, 2000);
+
               if (!addToPlaylist.ok) {
                 throw new Error(`HTTP error! Status: ${addToPlaylist.status}`);
               }
@@ -176,18 +193,30 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
 
   return (
     <div className="playlist-container">
-      <div>
-        <h1>What type of music do you want?</h1>
-      </div>
       <button onClick={handleLogout} className="logout-button">
         Logout
       </button>
-      <input
-        type="text"
-        id="userInput"
-        placeholder="type something"
-        onKeyUp={createPlaylist}
-      ></input>
+      {!loading && !playlistDone ? (
+        <div>
+          <div>
+            <h1>What type of music do you want?</h1>
+          </div>
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Type something and then press enter!"
+            onKeyUp={createPlaylist}
+          ></input>
+        </div>
+      ) : (
+        <div>
+          {loading ? (
+            <div>Creating your playlist and populating it with music. 😎</div>
+          ) : (
+            <div>Playlist is ready! You can use it now. 🎶</div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

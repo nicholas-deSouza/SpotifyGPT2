@@ -12,6 +12,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  overflow: hidden;
 }
 
 h1 {
@@ -57,7 +58,7 @@ input {
   border-radius: 10px;
   background-color: rgba(217, 217, 217, 1);
   color: black;
-  width: 335px;
+  width: 440px;
   height: 50px;
   border-color: rgba(217, 217, 217, 1);
   font-size: 26px;
@@ -80,6 +81,31 @@ input {
   height: 100vh; /* Adjust as needed */
 }
 
+
 .center-content {
   text-align: center; /* Optional: Align text center within its container */
+}
+
+.multi-circle .overlap-group {
+  height: 346px;
+  position: absolute;
+  top: 0px; /* Adjust top value based on your layout */
+  left: 0px; /* Adjust left value based on your layout */
+  width: 385px;
+}
+
+.multi-circle .ellipse,
+.multi-circle .img,
+.multi-circle .ellipse-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.exclude-circle .exclude {
+  height: 700px;
+  position: fixed; /* Use fixed positioning for screen-relative positioning */
+  bottom: 0;
+  right: 0;
+  width: 294px;
 }

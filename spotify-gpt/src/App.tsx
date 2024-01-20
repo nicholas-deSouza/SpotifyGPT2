@@ -1,6 +1,8 @@
 import { useState } from "react";
 import PlaylistScreen from "./playlistScreen";
 import HomeScreen from "./homeScreen";
+import { MultiCircle } from "./multiCircle";
+import { ExcludedCircle } from "./excludedCircle";
 
 function App() {
   // look into the state paramter for request user auth in spotify docs
@@ -17,6 +19,8 @@ function App() {
   return (
     <div className="app">
       <div className="center-content">
+        <MultiCircle />
+        <ExcludedCircle />
         {!token ? (
           <HomeScreen
             CLIENT_ID={CLIENT_ID}

@@ -192,9 +192,6 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
 
   return (
     <div className="playlist-container">
-      <button onClick={handleLogout} className="logout-button">
-        Logout
-      </button>
       {!loading && !playlistDone ? (
         <div>
           <div>
@@ -216,6 +213,9 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
           )}
         </div>
       )}
+      <button onClick={handleLogout} className="logout-button">
+        Logout
+      </button>
     </div>
   );
 };

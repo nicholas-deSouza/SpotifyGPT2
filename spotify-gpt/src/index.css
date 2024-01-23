@@ -30,8 +30,8 @@ a:hover {
 
 button {
   
-  border-radius: 8px;
-  border: 1px solid transparent;
+  border-radius: 1em;
+  border: 0.25em solid transparent;
   padding: 0.875em 2em;
   font-size: 1.5em;
   font-weight: normal;
@@ -51,7 +51,7 @@ button:hover, button:focus {
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 1em auto -webkit-focus-ring-color;
 }
 
 input {
@@ -65,9 +65,7 @@ input {
 }
 
 .logout-button {
-  position: absolute;
-  top: 0;
-  right: 0;
+  margin-top: 1em;
 }
 
 .app {
@@ -110,4 +108,62 @@ input {
 
 h2 {
   font-weight: normal;
+}
+
+.hamburger-menu {
+  display: none
+}
+
+/* Media Query for mobile */
+@media only screen and (max-width: 768px) {
+
+.logout-button {
+    /* height: 2em;
+    width: 2em;  */
+    background-color: transparent;
+    /* width: em; */
+    /* font-size: 1.2em;
+    top: 24em;
+    right: 6em; */
+    /* position: absolute; */
+}
+
+.login-button {
+  background-color: transparent;
+}
+
+.exclude-circle .exclude {
+  /* display: none; */
+  height: 25em;
+}
+
+.multi-circle .ellipse{
+  height: 15em;
+}
+
+.multi-circle .ellipse-2{
+  height: 16em
+}
+
+.multi-circle .img {
+  height: 17em
+}
+
+#userInput {
+  width: 10em;
+}
+
+#userInput::placeholder {
+  /* Set the placeholder text directly */
+  color: rgba(217, 217, 217, 1);
+}
+
+h1 {
+    font-size: 2em;
+}
+
+/* .hamburger-menu {
+      display: flex; 
+} */
+
 }

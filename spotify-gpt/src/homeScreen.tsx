@@ -50,14 +50,18 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
   }, []);
 
   return (
-    <button
-      onClick={() => {
-        handleLogin();
-        changePage();
-      }}
-    >
-      Login
-    </button>
+    <div className="home-screen-container">
+      <h1> Welcome to the SpotifyGPT Playlist Generator!</h1>
+      <h2> Click the button below to get started on generating your playlist </h2>
+      <button
+        onClick={() => {
+          handleLogin();
+          changePage();
+        }}
+      >
+        Login
+      </button>
+    </div>
   );
 };
 

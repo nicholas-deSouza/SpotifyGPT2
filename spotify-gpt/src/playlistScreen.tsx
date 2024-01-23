@@ -95,7 +95,6 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
             .then(async (apiKey) => {
               const openai = new OpenAI({
                 apiKey: apiKey,
-                // figure out how to access the env variables without this
                 dangerouslyAllowBrowser: true,
               });
               const initialMessage = `Provide a list of 10 songs related to ${userInput} without any rankings or specific order. Simply provide the names of the songs without including the names of the artists.`;

@@ -197,6 +197,9 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
           <div>
             <h1>What type of music do you want?</h1>
           </div>
+          <div>
+            <h2>Your playlist's name will be whatever you enter in the field below.</h2>
+          </div>
           <input
             type="text"
             id="userInput"
@@ -216,6 +219,9 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
       <button onClick={handleLogout} className="logout-button">
         Logout
       </button>
+      <div>
+        <img className="logout-icon" src="/img/Logout.svg" alt="Logout" />
+      </div>
     </div>
   );
 };

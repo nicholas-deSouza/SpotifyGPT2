@@ -28,9 +28,9 @@ a:hover {
   color: #535bf2;
 }
 
-button {
+.login-button {
   
-  border-radius: 1em;
+  border-radius: 0.5em;
   border: 0.25em solid transparent;
   padding: 0.875em 2em;
   font-size: 1.5em;
@@ -42,7 +42,7 @@ button {
 
   /* background: linear-gradient(90deg, #3f51b5, transparent) #2196f3; */
 }
-button:hover, button:focus {
+.login-button:hover, .login-button:focus {
 
   background-color: #00D35A;
   color: #fff;
@@ -55,17 +55,28 @@ button:focus-visible {
 }
 
 input {
-  border-radius: 10px;
+  border-radius: 0.5em;
   background-color: rgba(217, 217, 217, 1);
   color: black;
-  width: 440px;
-  height: 50px;
+  width: 17em;
+  height: 2em;
   border-color: rgba(217, 217, 217, 1);
-  font-size: 26px;
+  font-size: 1.6em;
 }
 
-.logout-button {
+.logout-button{
   margin-top: 1em;
+  position: absolute;
+  top: 0.1em; 
+  right: 0.1em;
+  border-radius: 0.5em;
+  border: 0.25em solid transparent;
+  padding: 0.875em 2em;
+  font-size: 1.5em;
+  font-weight: normal;
+  font-family: inherit;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .app {
@@ -81,28 +92,28 @@ input {
 }
 
 .multi-circle .overlap-group {
-  height: 346px;
+  height: 1em;
   position: absolute;
-  top: 0px; /* Adjust top value based on your layout */
-  left: 0px; /* Adjust left value based on your layout */
-  width: 385px;
+  top: 0em; 
+  left: 0em; 
+  width: 1em;
 }
 
 .multi-circle .ellipse,
 .multi-circle .img,
 .multi-circle .ellipse-2 {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0em;
+  left: 0em;
   z-index: -1;
 }
 
 .exclude-circle .exclude {
-  height: 700px;
+  height: -1em;
   position: fixed; /* Use fixed positioning for screen-relative positioning */
-  bottom: 0;
-  right: 0;
-  width: 294px;
+  bottom: -1em;
+  right: 0em;
+  width: -1em;
   z-index: -1;
 }
 
@@ -110,22 +121,32 @@ h2 {
   font-weight: normal;
 }
 
-.hamburger-menu {
-  display: none
+.logout-icon {
+  margin-top: 1em;
+  position: absolute;
+  top: 1.1em; 
+  right: 0em;
+  border-radius: 0.5em;
+  border: 0.25em solid transparent;
+  padding: 0.875em 2em;
+  cursor: pointer;
+  display: none;
+  width: 2em;
 }
 
+
 /* Media Query for mobile */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px){
 
 .logout-button {
-    /* height: 2em;
-    width: 2em;  */
-    background-color: transparent;
-    /* width: em; */
-    /* font-size: 1.2em;
-    top: 24em;
-    right: 6em; */
-    /* position: absolute; */
+  display: none;
+}
+
+/* looks a little off for an iPhone SE */
+.logout-icon {
+  display: block;
+  width: 1.7em;
+  right: 0em;
 }
 
 .login-button {
@@ -133,8 +154,7 @@ h2 {
 }
 
 .exclude-circle .exclude {
-  /* display: none; */
-  height: 25em;
+  height: 23em;
 }
 
 .multi-circle .ellipse{
@@ -151,10 +171,10 @@ h2 {
 
 #userInput {
   width: 10em;
+  height: 1.5em;
 }
 
 #userInput::placeholder {
-  /* Set the placeholder text directly */
   color: rgba(217, 217, 217, 1);
 }
 
@@ -162,8 +182,23 @@ h1 {
     font-size: 2em;
 }
 
-/* .hamburger-menu {
-      display: flex; 
-} */
+}
+
+@media only screen and (max-height: 704px) {
+  .exclude-circle .exclude {
+    height: 32em;
+  }
+
+  .multi-circle .ellipse{
+    height: 14em;
+  }
+  
+  .multi-circle .ellipse-2{
+    height: 15em
+  }
+  
+  .multi-circle .img {
+    height: 16em
+  }
 
 }

@@ -9,7 +9,7 @@ import OpenAI from "openai";
 const getOpenAIKey = async (): Promise<string> => {
   try {
     const response = await fetch(
-      "https://h5ddefrzpj4rd6nfye65tc6dci0liknp.lambda-url.us-east-2.on.aws/getOpenAIKey"
+      "https://ov4ynhavt2h5f5hjlraob7z5fu0yugpw.lambda-url.us-east-2.on.aws/getOpenAIKey"
     );
     const data = await response.json();
     return data["OPENAI_API_KEY"];

@@ -8,7 +8,7 @@ import React from "react";
 function App() {
   // look into the state paramter for request user auth in spotify docs
   const CLIENT_ID = "c5b92af7cda34c69a72b9d00cd7e0834";
-  const REDIRECT_URI = "https://main.d2dkrnlelmb9rv.amplifyapp.com/home";
+  const REDIRECT_URI = "https://main.d2dkrnlelmb9rv.amplifyapp.com";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SCOPE =

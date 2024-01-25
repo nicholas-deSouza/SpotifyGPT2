@@ -2,7 +2,6 @@ import dotenv from 'dotenv';
 dotenv.config({ path: './.env' });
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-console.log("Key is:", OPENAI_API_KEY)
 const PORT = process.env.PORT || 3001;
 
 import express from 'express';

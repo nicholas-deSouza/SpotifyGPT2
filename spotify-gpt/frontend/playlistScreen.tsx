@@ -56,12 +56,13 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
     }
   };
 
-  const createPlaylist = async (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const createPlaylist = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     const userInput = (document.getElementById("userInput") as HTMLInputElement)?.value;
 
     // allows for the value of Promise<string> getUserId to be resolved to type string
     getUserId().then(async (userId) => {
-      if (event.key === "Enter") {
+      {
         setLoading(true);
         try {
           const response = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
@@ -202,12 +203,9 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
           <div>
             <h2>Your playlist's name will be whatever you enter in the field below.</h2>
           </div>
-          <input
-            type="text"
-            id="userInput"
-            placeholder="Type something and then press enter!"
-            onKeyUp={createPlaylist}
-          ></input>
+          <form onSubmit={createPlaylist}>
+            <input type="text" id="userInput" placeholder="Type something and then press enter!" />
+          </form>
         </div>
       ) : (
         <div>

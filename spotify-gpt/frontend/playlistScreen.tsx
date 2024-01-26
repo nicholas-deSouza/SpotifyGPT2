@@ -222,7 +222,9 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
         Logout
       </button>
       <div>
-        <img className="logout-icon" src="/img/Logout.svg" alt="Logout" />
+        <a href="#" onClick={handleLogout}>
+          <img className="logout-icon" src="/img/Logout.svg" alt="Logout" />
+        </a>
       </div>
     </div>
   );

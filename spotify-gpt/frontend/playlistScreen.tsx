@@ -47,7 +47,7 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
       }
 
       const { id } = await response.json();
-      console.log("User ID is:", id);
+      // console.log("User ID is:", id);
 
       return id;
     } catch (error) {
@@ -81,7 +81,7 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
             }),
           });
 
-          console.log("Request payload:", JSON.stringify);
+          // console.log("Request payload:", JSON.stringify);
 
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -89,7 +89,7 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
 
           const data = await response.json();
           const playlistId = data.id;
-          console.log(`Playlist "${userInput}" created with ID: ${playlistId}`);
+          // console.log(`Playlist "${userInput}" created with ID: ${playlistId}`);
 
           // have array of songs and then feed it to getSongInfo
 
@@ -153,7 +153,7 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
                   listOfSongURIs.push(songURI);
 
                   // prints out song URIs for each song
-                  console.log(`List of URIs for ${item}:`, [songURI]);
+                  // console.log(`List of URIs for ${item}:`, [songURI]);
                 }
               }
 

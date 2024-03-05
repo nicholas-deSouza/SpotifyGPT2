@@ -38,9 +38,7 @@ a:hover {
   font-family: inherit;
   background-color: #3039AA;
   cursor: pointer;
-  transition: background-color 1s;
-
-  /* background: linear-gradient(90deg, #3f51b5, transparent) #2196f3; */
+  
 }
 .login-button:hover, .login-button:focus {
 

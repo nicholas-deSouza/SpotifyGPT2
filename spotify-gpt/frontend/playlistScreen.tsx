@@ -28,7 +28,6 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
       }
 
       const { id } = await response.json();
-      // console.log("User ID is:", id);
 
       return id;
     } catch (error) {
@@ -64,14 +63,14 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        console.log("s");
+
         const data = await response.json();
         const playlistId = data.id;
 
         // Fetch data from backend
         let songList;
         try {
-          const backendResponse = await fetch("http://localhost:3001/OpenAIInput", {
+          const backendResponse = await fetch("http://localhost:3001/ListOfSongs", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -135,7 +134,7 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
         setPlaylistDone(true);
         setTimeout(() => {
           setPlaylistDone(false);
-        }, 2000);
+        }, 3000);
 
         if (!addToPlaylist.ok) {
           throw new Error(`HTTP error! Status: ${addToPlaylist.status}`);
@@ -163,9 +162,13 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
       ) : (
         <div>
           {loading ? (
-            <div>Creating your playlist and populating it with music. 😎</div>
+            <div>
+              <h2>Creating your playlist and populating it with music. 😎</h2>
+            </div>
           ) : (
-            <div>Playlist is ready! You can use it now. 🎶</div>
+            <div>
+              <h2>Playlist is ready! You can use it now. 🎶</h2>
+            </div>
           )}
         </div>
       )}

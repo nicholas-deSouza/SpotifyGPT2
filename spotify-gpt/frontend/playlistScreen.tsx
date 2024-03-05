@@ -70,13 +70,16 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
         // Fetch data from backend
         let songList;
         try {
-          const backendResponse = await fetch("http://localhost:3001/ListOfSongs", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ userInput }),
-          });
+          const backendResponse = await fetch(
+            "https://ov4ynhavt2h5f5hjlraob7z5fu0yugpw.lambda-url.us-east-2.on.aws/ListOfSongs",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ userInput }),
+            }
+          );
 
           if (!backendResponse.ok) {
             throw new Error("Network response was not ok");

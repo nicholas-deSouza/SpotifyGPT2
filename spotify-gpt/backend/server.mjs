@@ -2,7 +2,6 @@ import dotenv from 'dotenv';
 dotenv.config({ path: './.env' });
 import serverless from 'serverless-http';
 import express from 'express';
-import cors from 'cors';
 import OpenAI from "openai";
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
@@ -10,14 +9,6 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.use(express.json());
-
-// maybe remove for deployment
-const corsOptions = {
-  origin: 'http://localhost:5173', // Allow requests from this origin
-};
-
-app.use(cors(corsOptions));
-
 
 app.post('/ListOfSongs', async (req, res) => {
   try {
@@ -57,10 +48,6 @@ app.post('/ListOfSongs', async (req, res) => {
     console.error('Error processing OpenAI Response', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
 });
 
 export const handler = serverless(app);

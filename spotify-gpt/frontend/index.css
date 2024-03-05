@@ -77,6 +77,10 @@ input {
   cursor: pointer;
 }
 
+.logout-button:hover {
+  background-color: #00D35A;
+}
+
 .app {
   display: flex;
   justify-content: center;

@@ -17,6 +17,9 @@ app.use(cors({
 }));
 
 app.post('/ListOfSongs', async (req, res) => {
+
+  console.log("response" + JSON.stringify(res.body));
+
   res.setHeader('Access-Control-Allow-Origin', 'https://www.spotifygpt.xyz');
   res.setHeader('Access-Control-Allow-Methods', 'POST');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');

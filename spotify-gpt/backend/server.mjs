@@ -3,6 +3,7 @@ dotenv.config({ path: './.env' });
 import serverless from 'serverless-http';
 import express from 'express';
 import OpenAI from "openai";
+import cors from 'cors';
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const PORT = process.env.PORT || 3001;
@@ -10,7 +11,15 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(express.json());
 
+app.use(cors({
+  origin: 'https://www.spotifygpt.xyz',
+  credentials: true  // Allow credentials (cookies, Authorization headers, etc.)
+}));
+
 app.post('/ListOfSongs', async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://www.spotifygpt.xyz');
+  res.setHeader('Access-Control-Allow-Methods', 'POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   try {
     const userInput = req.body.userInput;
 

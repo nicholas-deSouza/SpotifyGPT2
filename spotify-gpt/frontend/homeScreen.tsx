@@ -51,7 +51,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
 
   return (
     <div className="home-screen-container">
-      <h1> Welcome to the SpotifyGPT Playlist Generator!</h1>
+      <h1> Welcome to the GrooveGenerator!</h1>
       <h2> Click the button below to get started on generating your playlist </h2>
       <button
         className="login-button"

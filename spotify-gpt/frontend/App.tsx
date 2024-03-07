@@ -11,8 +11,7 @@ function App() {
   const REDIRECT_URI = "https://groovegenerator.xyz";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
-  const SCOPE =
-    "user-read-private, user-read-email, playlist-modify-private, playlist-modify-public"; // Add or modify scopes as needed
+  const SCOPE = "user-read-private, playlist-modify-private"; // Add or modify scopes as needed
   const SHOW_DIALOG = "true";
 
   const [token, setToken] = useState<string>(""); // Specify the type explicitly as 'string'

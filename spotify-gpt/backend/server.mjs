@@ -3,14 +3,11 @@ dotenv.config({ path: './.env' });
 import serverless from 'serverless-http';
 import express from 'express';
 import OpenAI from "openai";
-import cors from 'cors';
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.use(express.json());
-
 
 app.post('/ListOfSongs', async (req, res) => {
 

@@ -74,6 +74,7 @@ const PlaylistScreen: React.FC<PlaylistScreenProps> = ({ setToken, token }) => {
             "https://ov4ynhavt2h5f5hjlraob7z5fu0yugpw.lambda-url.us-east-2.on.aws/ListOfSongs",
             {
               method: "POST",
+              // backend is expecting "content-type"
               headers: {
                 "Content-Type": "application/json",
               },
